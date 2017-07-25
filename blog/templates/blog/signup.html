@@ -1,0 +1,148 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<body>
+	<div class="container">
+		<div class="main-header">
+			<div class="inner-side">
+				<div class="header">
+					<div class="head-top">
+						<div class="top-menu">
+						<span class="menu"><img src="images/nav.png" alt=""/> </span>
+							<ul>
+								<li><a href="/"><span>Home</span></a></li>
+								<li ><a href="about.html"><span>About us</span></a></li>
+								<li class="active"><a href="signup"><span>注册</span></a></li>
+								<li><a href="products.html"><span>Products</span></a></li>
+								<li class="has-sub"><a href="services.html"><span>Services</span></a></li>
+								<li><a href="typo.html"><span>typo</span></a></li>
+								<li class="last"><a href="contact.html"><span>Contact</span></a></li>
+							</ul>
+						</div>
+						<div class="social-icons">
+							<a href="#"><i class="icon1"></i></a>
+							<a href="#"><i class="icon2"></i></a>
+							<a href="#"><i class="icon3"></i></a>
+						</div>	
+							<!-- script for menu -->
+											
+									 <script>
+									 $("span.menu").click(function(){
+									 $(".top-menu ul").slideToggle("slow" , function(){
+									 });
+									 });
+									 </script>
+								<!-- //script for menu -->
+
+						<div class="clearfix"></div>
+					</div>
+					
+				</div>
+				<div class="header-banner">
+			<h2>用户注册</h2>
+			</div>
+
+					<div class="about-section">
+						
+						<div class="about-grids">
+						<div >
+               <form class="form-horizontal" id = "form" action="{{path}}" method="post">
+                {% csrf_token %}
+                        
+                        
+                  <div class="form-group {%if form.username.errors%} has-error {%endif%}">
+                    <label for="username" class="col-sm-4 control-label">用户名* :</label>
+                    <div class="col-sm-5">
+                    {{form.username}}
+                    </div>
+                    {%if form.username.errors%}
+                  <div class="col-sm-5 col-sm-offset-4 margint10">
+                  <span class="color-background2 ">
+                  {% for error in form.username.errors %}
+                    {{ error|escape }}
+                  {% endfor %}
+                  </span>
+                  </div>
+                  {%endif%}
+                </div>
+                <div class="form-group {%if form.email.errors%} has-error {%endif%}">
+                  <label for="email" class="col-sm-4 control-label">Email*:</label>
+                  <div class="col-sm-5">
+                    {{form.email}}
+                  </div>
+                  {%if form.email.errors%}
+                  <div class="col-sm-5 col-sm-offset-4 margint10">
+                  <span class="color-background2 ">
+                  {% for error in form.email.errors %}
+                    {{ error|escape }}
+                  {% endfor %}
+                  </span>
+                  </div>
+                  {%endif%}
+                </div>
+                <div class="form-group {%if form.password.errors%} has-error {%endif%}">
+                  <label for="pssword" class="col-sm-4 control-label">密码*:</label>
+                  <div class="col-sm-5">
+                    {{form.password}}
+                  </div>
+                  {%if form.password.errors%}
+                  <div class="col-sm-5 col-sm-offset-4 margint10">
+                  <span class="color-background2 ">
+                  {% for error in form.password.errors %}
+                    {{ error|escape }}
+                  {% endfor %}
+                  </span>
+                  </div>
+                  {%endif%}
+                </div>
+                <div class="form-group {%if form.password2.errors%} has-error {%endif%}">
+                  <label for="pssword2" class="col-sm-4 control-label">确认密码*:</label>
+                  <div class="col-sm-5">
+                    {{form.confirm_password}}
+                  </div>
+                  {%if form.confirm_password.errors%}
+                  <div class="col-sm-5 col-sm-offset-4 margint10">
+                  <span class="color-background2 ">
+                  {% for error in form.confirm_password.errors %}
+                    {{ error|escape }}
+                  {% endfor %}
+                  </span>
+                  </div>
+                  {%endif%}
+                </div>
+
+                <div class="form-group margint30">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">确认</button>
+                  </div>
+                </div>
+                    
+
+                     
+                     
+                       
+                       
+                   
+               </form>
+           </div>
+						
+						
+					</div>
+					</div>
+					
+					
+				
+				
+					
+				<!--start-footer-section-->
+				<div class="footer-section">
+					<div class="footer-top">
+						<p>Copyright &copy; 2015.Company name All rights reserved.More Templates </p>
+					</div>
+				</div>
+	<!--end-footer-section-->
+			</div>
+		</div>
+	</div>
+ </body>
+</html> 
+{% endblock %}
