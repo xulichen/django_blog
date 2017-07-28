@@ -252,11 +252,11 @@ class FullView(IndexView):
     context_object_name = 'article_list'
     paginate_by = 5
 
-    # def get_queryset(self):
-    #     article_list = Article.objects.filter(is_show=True)
-    #     for article in article_list:
-    #         article.content = strip_tags(markdown.markdown(article.content,))[:54]
-    #     return article_list
+    def get_queryset(self):
+        article_list = Article.objects.filter(is_show=True)
+        for article in article_list:
+            article.content = strip_tags(markdown.markdown(article.content,))[:54]
+        return article_list
     #
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
