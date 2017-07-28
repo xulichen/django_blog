@@ -21,7 +21,7 @@
 - contact功能
 - 提升网址运行效率
 
-- 各项学习资料如下：
+### 各项学习资料如下：
   1. python核心编程 (第三版)  作者：Wesley Chun
   2. bilibili网站--fhx--Django学习视频    [进入](https://space.bilibili.com/31964921？from=search&seid=9611532700606974575#!/channel/detail?cid=10974)
   3. Django博客开发教程    作者：追梦人物    [进入](http://zmrenwu.com/)
