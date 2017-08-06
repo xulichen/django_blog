@@ -70,3 +70,13 @@ class MyUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
+
+class Contact(models.Model):
+    name = models.CharField('姓名', max_length=30)
+    subject = models.CharField('标题', max_length=30)
+    email = models.EmailField('邮箱', max_length=255)
+    message = models.TextField('内容')
+
+    def __str__(self):
+        return self.subject

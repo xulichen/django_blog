@@ -140,3 +140,9 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '*******@qq.com' # 你的 QQ 邮箱
+EMAIL_HOST_PASSWORD = '**********' # 手机短信开启smtp服务的配置密码，如果是QQ邮箱的话
+EMAIL_USE_TLS = True # 这里必须是 True，否则发送不成功
+

@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^about/', views.about),
     url(r'^signup/', views.signup),
     url(r'^logout/', views.logout_view),
-    url(r'^contact/', views.contact),
+    url(r'^contact/', views.contact, name='contact'),
     url(r'^full-width/', views.FullView.as_view(), name='blog'),
     # url(r'^article/(?P<pk>[0-9]+)/$', views.detail, name='detail'),
     url(r'^article/(?P<pk>[0-9]+)/$', views.PostDetailView.as_view(), name='detail'),

@@ -8,10 +8,12 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 import markdown
 from comments.forms import CommentForm
+from blog.forms import ContactForm
 from django.utils.html import strip_tags
 from markdown.extensions.toc import TocExtension
 from django.utils.text import slugify
 from django.db.models import Q
+from django.core.mail import send_mail
 # Create your views here.
 
 # def home(request):
@@ -219,6 +221,16 @@ def about(request):
 
 
 def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            form.save()
+            send_mail(subject=subject, message=message, from_email='306084800@qq.com', recipient_list=['13262797993@163.com'], fail_silently=False)
+    else:
+        form = ContactForm()
     return render(request, 'blog/contact.html', locals())
 
 

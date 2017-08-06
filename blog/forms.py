@@ -3,8 +3,33 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
 from django.utils.translation import ugettext, ugettext_lazy as _
-
+from .models import Contact
 import re
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'subject', 'message']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'type': 'name',
+                'placeholder': 'Name',
+                }),
+            'email': forms.TextInput(attrs={
+                'type': 'name',
+                'placeholder': 'Email'
+            }),
+            'subject': forms.TextInput(attrs={
+                'type': 'subject',
+                'placeholder': 'Subject'
+            }),
+            'message': forms.Textarea(attrs={
+                'type': 'message',
+                'placeholder': 'Message',
+                'row': 7,
+            }),
+        }
 
 
 def lowercase_email(email):
@@ -77,3 +102,4 @@ class SignupForm(forms.ModelForm):
         except UserModel.DoesNotExist:
             return username
         raise forms.ValidationError("有人已经注册了这个用户名")
+
