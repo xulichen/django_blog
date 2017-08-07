@@ -146,3 +146,14 @@ EMAIL_HOST_USER = '*******@qq.com' # 你的 QQ 邮箱
 EMAIL_HOST_PASSWORD = '**********' # 手机短信开启smtp服务的配置密码，如果是QQ邮箱的话
 EMAIL_USE_TLS = True # 这里必须是 True，否则发送不成功
 
+# celery settings
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
+#: Only add pickle to this list if your broker is secured
+#: from unwanted access (see userguide/security.html)
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_ENABLE_UTC = True
+CELERY_TIMEZONE = TIME_ZONE

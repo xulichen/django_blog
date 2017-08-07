@@ -14,6 +14,7 @@ from markdown.extensions.toc import TocExtension
 from django.utils.text import slugify
 from django.db.models import Q
 from django.core.mail import send_mail
+from .tasks import celery_send_email
 # Create your views here.
 
 # def home(request):
@@ -228,7 +229,8 @@ def contact(request):
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
             form.save()
-            send_mail(subject=subject, message=message, from_email='306084800@qq.com', recipient_list=['13262797993@163.com'], fail_silently=False)
+            # send_mail(subject=subject, message=message, from_email='306084800@qq.com', recipient_list=['13262797993@163.com'], fail_silently=False)
+            celery_send_email.delay(subject, message, '306084800@qq.com', ['13262797993@163.com'])
     else:
         form = ContactForm()
     return render(request, 'blog/contact.html', locals())
