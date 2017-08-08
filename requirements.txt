@@ -9,4 +9,4 @@ psycopg2==2.7.1
 Pygments==2.2.0
 six==1.10.0
 Whoosh==2.7.4
-
+celery==4.1.0
