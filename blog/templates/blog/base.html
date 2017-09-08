@@ -28,6 +28,27 @@
         <script src='{% static "blog/js/bootstrap.min.js" %}'></script>
         <script src='{% static "blog/js/pace.min.js" %}'></script>
         <script src='{% static "blog/js/modernizr.custom.js" %}'></script>
+		<script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
+		<script>
+			$(function () {
+				//当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+				$(function () {
+					$(window).scroll(function () {
+						if ($(window).scrollTop() > 100) {
+							$("#back-to-top").fadeIn(1500);
+						}
+						else {
+							$("#back-to-top").fadeOut(1500);
+						}
+					});
+					//当点击跳转链接后，回到页面顶部位置
+					$("#back-to-top").click(function () {
+						$('body,html').animate({ scrollTop: 0 }, 1000); //1000代表1秒时间回到顶点
+						return false;
+					});
+				});
+			});
+		</script>
     </head>
 
     <body>
@@ -79,11 +100,14 @@
                 <aside class="col-md-4">
                     {% block aside %}
                     {% endblock aside %}
+
                 </aside>
+
         </div>
     </div>
 </div>
 
+		<p id="back-to-top"><a href="#">返回顶部</a></p>
 
 
         <footer id="site-footer">
